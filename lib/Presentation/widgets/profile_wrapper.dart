@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/login_bloc/login_bloc.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/login_bloc/login_state.dart';
-import 'package:forbiddenburgerapp/Presentation/pages/login_screen.dart';
-import 'package:forbiddenburgerapp/Presentation/pages/profile_screen.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/login_page.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/profile_page.dart';
 
 class ProfileWrapper extends StatelessWidget {
   const ProfileWrapper({super.key});
@@ -13,9 +13,9 @@ class ProfileWrapper extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         if (state.loggedInUser) {
-          return const ProfileScreen();
+          return const ProfilePage();
         } else {
-          return const LoginScreen();
+          return const LoginPage();
         }
       },
     );

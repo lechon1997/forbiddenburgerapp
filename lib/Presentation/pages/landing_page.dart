@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/landing_page_bloc/landing_page_bloc.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/landing_page_bloc/landing_page_event.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/landing_page_bloc/landing_page_state.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/home_page.dart';
 import 'package:forbiddenburgerapp/Presentation/widgets/profile_wrapper.dart';
 
 List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
@@ -25,7 +26,7 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 ];
 
 const List<Widget> bottomNavPages = <Widget>[
-  Text('Inicio'),
+  HomePage(),
   Text('Mis Compras'),
   Text('Cupones'),
   ProfileWrapper(),
@@ -35,7 +36,7 @@ class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
 
   @override
-  State<LandingPage> createState () => _LandingPageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
 class _LandingPageState extends State<LandingPage> {
@@ -50,14 +51,15 @@ class _LandingPageState extends State<LandingPage> {
 
         if (_navigationStack.isNotEmpty) {
           final previousIndex = _navigationStack.removeLast();
-          BlocProvider.of<LandingPageBloc>(context).add(TabChange(tabIndex: previousIndex));
+          BlocProvider.of<LandingPageBloc>(context)
+              .add(TabChange(tabIndex: previousIndex));
           return false;
         }
 
         if (currentIndex == 0) {
           return true;
         }
-        
+
         return false;
       },
       child: BlocConsumer<LandingPageBloc, LandingPageState>(
