@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/burgers_page.dart';
+import 'package:forbiddenburgerapp/Presentation/widgets/meal_deals_container_widget.dart';
+import 'package:forbiddenburgerapp/Presentation/widgets/special_discounts_container.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,22 +15,28 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-          child: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Image.asset(
+                "assets/images/p13.png",
+                width: size.width,
+                fit: BoxFit.cover,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
                     child: Column(
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            // Acción cuando se presiona el botón
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const BurgersPage()));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
@@ -118,11 +127,15 @@ class _HomePageState extends State<HomePage> {
                     ),
                   )
                 ],
-              )
+              ),
+              SizedBox(height: 30),
+              MealDealdsWidget(),
+              SizedBox(height: 20),
+              SpecialDiscountsContainer()
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 }
