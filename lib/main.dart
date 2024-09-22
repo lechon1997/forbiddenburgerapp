@@ -11,17 +11,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider(create: ( _ ) => LoginBloc()),
-      BlocProvider(create: ( _ ) => LandingPageBloc()),
-    ], child: MaterialApp(
-        title: 'Menú Inferior App',
-        theme: ThemeData(
-          useMaterial3: true,
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: '/',
-        onGenerateRoute: RouteGenerator().generateRoute,
-      ));
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => LoginBloc()),
+          BlocProvider(create: (_) => LandingPageBloc()),
+        ],
+        child: MaterialApp(
+          title: 'Menú Inferior App',
+          theme: ThemeData(
+            fontFamily: "Cherk",
+            textTheme: const TextTheme(
+              bodyLarge: TextStyle(fontWeight: FontWeight.normal), // Regular
+              bodyMedium: TextStyle(fontWeight: FontWeight.normal), // Regular
+              headlineMedium: TextStyle(fontWeight: FontWeight.bold), // Bold
+            ),
+            useMaterial3: true,
+            primarySwatch: Colors.blue,
+          ),
+          initialRoute: '/',
+          onGenerateRoute: RouteGenerator().generateRoute,
+        ));
   }
 }

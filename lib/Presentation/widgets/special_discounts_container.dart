@@ -24,18 +24,30 @@ class SpecialDiscountsContainer extends StatelessWidget {
           child: Row(
             children: [
               SpecialDiscountsWidget(
+                image: "assets/images/burger1.png",
+                description:
+                    "doble carne de 100 gramos, doble queso cheddar, doble tomate, 1 feta de jamón, y mayonesa",
+                name: "Doble burger americana con triple quesito cheddar",
                 discount: false,
                 newPrice: 190,
                 price: 210,
                 percent: 12,
               ),
               SpecialDiscountsWidget(
+                image: "assets/images/burger1.png",
+                description:
+                    "doble carne de 100 gramos, doble queso cheddar, doble tomate, 1 feta de jamón, y mayonesa",
+                name: "Doble burger americana",
                 discount: false,
                 newPrice: 190,
                 price: 210,
                 percent: 12,
               ),
               SpecialDiscountsWidget(
+                image: "assets/images/burger1.png",
+                description:
+                    "doble carne de 100 gramos, doble queso cheddar, doble tomate, 1 feta de jamón, y mayonesa",
+                name: "Doble burger americana",
                 discount: false,
                 newPrice: 190,
                 price: 210,
