@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forbiddenburgerapp/Presentation/pages/product_detail_page.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/product_detail_page/product_detail_page.dart';
 
 class MealDealsProductWidget extends StatefulWidget {
   final String image;

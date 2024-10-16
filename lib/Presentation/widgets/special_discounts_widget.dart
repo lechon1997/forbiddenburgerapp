@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forbiddenburgerapp/Presentation/pages/product_detail_page.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/product_detail_page/product_detail_page.dart';
 
 class SpecialDiscountsWidget extends StatefulWidget {
   final String image;
@@ -32,7 +32,6 @@ class _SpecialDiscountsState extends State<SpecialDiscountsWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navega a la pantalla de detalles del producto
         Navigator.push(
           context,
           MaterialPageRoute(

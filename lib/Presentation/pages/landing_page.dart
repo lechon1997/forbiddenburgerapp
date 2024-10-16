@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/landing_page_bloc/landing_page_bloc.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/landing_page_bloc/landing_page_event.dart';
 import 'package:forbiddenburgerapp/Presentation/bloc/landing_page_bloc/landing_page_state.dart';
-import 'package:forbiddenburgerapp/Presentation/pages/home_page.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/cart_page/cart_page.dart';
+import 'package:forbiddenburgerapp/Presentation/pages/home_page/home_page.dart';
 import 'package:forbiddenburgerapp/Presentation/widgets/profile_wrapper.dart';
 
 List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
@@ -13,7 +14,7 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   ),
   BottomNavigationBarItem(
     icon: Icon(Icons.shopping_cart),
-    label: 'Mis Compras',
+    label: 'Carrito',
   ),
   BottomNavigationBarItem(
     icon: Icon(Icons.card_giftcard),
@@ -27,7 +28,7 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 
 const List<Widget> bottomNavPages = <Widget>[
   HomePage(),
-  Text('Mis Compras'),
+  CartPage(),
   Text('Cupones'),
   ProfileWrapper(),
 ];

@@ -7,13 +7,15 @@ class BurgersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: const Color(0xffFF6D00),
+      ),
       body: SingleChildScrollView(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 10),
           child: const Column(
             children: [
-              SizedBox(height: 16),
+              SizedBox(height: 22),
               ProductWidget(
                 discount: false,
                 newPrice: 190,

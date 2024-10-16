@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
-class ProductWidget extends StatefulWidget {
-  final bool discount;
+class CartItem extends StatefulWidget {
+  final String name;
+  final String image;
   final int price;
-  final int newPrice;
-  final int percent;
 
-  const ProductWidget({
+  const CartItem({
     super.key,
-    required this.discount,
+    required this.name,
+    required this.image,
     required this.price,
-    required this.newPrice,
-    required this.percent,
   });
 
   @override
-  State<ProductWidget> createState() => _ProductWidgetState();
+  State<CartItem> createState() => _CartItemState();
 }
 
-class _ProductWidgetState extends State<ProductWidget> {
+class _CartItemState extends State<CartItem> {
   int cartCount = 0;
 
   @override
@@ -31,10 +29,10 @@ class _ProductWidgetState extends State<ProductWidget> {
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: SizedBox(
-                width: 120,
-                height: 100,
+                width: 90,
+                height: 70,
                 child: Image.asset(
-                  "assets/images/burger1.png",
+                  widget.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -46,60 +44,71 @@ class _ProductWidgetState extends State<ProductWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Hamburguesa Americana doble",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xff424242),
-                        height: 1.2,
+                    SizedBox(
+                      height: 36,
+                      child: Text(
+                        widget.name,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: Color(0xff424242),
+                          fontFamily: "cherk",
+                          height: 1.2,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 6),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "\$${widget.price}",
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff757575),
-                            decoration: TextDecoration
-                                .lineThrough, // Agregar línea en el medio
-                            decorationColor: Color(
-                                0xff212121), // Color de la línea (opcional, usa el mismo que el texto)
+                    Container(
+                      // color: Colors.pink,
+                      alignment: Alignment.bottomCenter,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            alignment: Alignment.topCenter,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "\$${widget.price}",
+                                  style: const TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff424242)),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                const Text(
+                                  "Editar producto",
+                                  style: TextStyle(
+                                      fontFamily: "cherk",
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff424242)),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "\$${widget.newPrice}",
-                              style: const TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff212121)),
+                          SizedBox(
+                            //color: Colors.purple,
+                            height: 50,
+                            child: Align(
+                              alignment: Alignment
+                                  .bottomRight, // Alinear hacia la parte inferior derecha
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .end, // Alinear hacia la derecha
+                                children: [
+                                  if (cartCount == 0)
+                                    _buildAddButton() // Botón circular pequeño "+"
+                                  else
+                                    _buildCartControls(), // Controles de cantidad en el carrito
+                                ],
+                              ),
                             ),
-                            const SizedBox(
-                              width: 4,
-                            ),
-                            Text(
-                              "${widget.percent}% OFF",
-                              style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff388E3C)),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    const Text(
-                      "Deliciosa hamburguesa con queso, lechuga, tomate y salsas...",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Color(0xff757575),
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -108,21 +117,7 @@ class _ProductWidgetState extends State<ProductWidget> {
             )
           ],
         ),
-        const SizedBox(height: 6),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end, // Ubicar a la derecha
-            children: [
-              if (cartCount == 0)
-                _buildAddButton() // Botón circular pequeño "+"
-              else
-                _buildCartControls(), // Controles de cantidad en el carrito
-            ],
-          ),
-        ),
-        const SizedBox(height: 10), // Separación entre el Row y el borde
-        Container(
+        /* Container(
           decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(
@@ -131,7 +126,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               ),
             ),
           ),
-        ),
+        ),*/
         const SizedBox(height: 16)
       ],
     );
@@ -177,7 +172,7 @@ class _ProductWidgetState extends State<ProductWidget> {
               cartCount > 1
                   ? Icons.remove
                   : Icons.delete, // Mostrar "-" o basurero
-              color: Colors.red,
+              color: const Color(0xffD32F2F),
             ),
             padding: EdgeInsets.zero, // Eliminar padding adicional
             constraints: const BoxConstraints(
@@ -201,13 +196,16 @@ class _ProductWidgetState extends State<ProductWidget> {
                 horizontal: 6), // Espacio entre el número y los iconos
             child: Text(
               '$cartCount', // Mostrar la cantidad en el carrito
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: "Cherk",
+                  fontWeight: FontWeight.w600),
             ),
           ),
           IconButton(
             icon: const Icon(
               Icons.add,
-              color: Colors.green,
+              color: Color(0xff388E3C),
             ),
             padding: EdgeInsets.zero, // Eliminar padding adicional
             constraints: const BoxConstraints(
