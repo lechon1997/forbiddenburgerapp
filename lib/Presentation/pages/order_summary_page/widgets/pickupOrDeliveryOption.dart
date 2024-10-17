@@ -87,7 +87,7 @@ class _PickupOrDeliveryOptionState extends State<PickupOrDeliveryOption> {
                       width: 140,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 4, vertical: 12),
+                          horizontal: 4, vertical: 16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         color: _selectedOption == "Retiro"
